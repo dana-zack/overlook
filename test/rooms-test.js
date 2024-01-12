@@ -1,8 +1,9 @@
 import chai from 'chai';
 const expect = chai.expect;
-import { sampleRooms, sampleBookings, sampleCustomers, sampleCustomer1, sampleCustomer2, sampleCustomer3, sampleCustomer1Bookings, sampleCustomer2Bookings } from './sample-data'
-import { gatherBookingsByCustomer, calculateCosts } from '../src/rooms'
+import { sampleRooms, sampleBookings, sampleCustomers, sampleCustomer1, sampleCustomer2, sampleCustomer3, sampleCustomer1Bookings, sampleCustomer2Bookings, roomsByDate1, sampleBookings2 } from './sample-data'
+import { gatherBookingsByCustomer, calculateCosts, findRoomsByDate } from '../src/rooms'
 
+// ===================================================================
 describe('gatherBookingsByCustomer', function() {
   it('Should return an array of all of the bookings made by a single customer', function() {
     const user1Bookings = gatherBookingsByCustomer(sampleCustomer1, sampleBookings)
@@ -15,6 +16,7 @@ describe('gatherBookingsByCustomer', function() {
   });
 });
 
+// ===================================================================
 describe('calculateCosts', function() {
   it('Should return the total cost of all of the bookings made by a single customer', function() {
     const user1Cost = calculateCosts(sampleCustomer1Bookings, sampleRooms)
@@ -26,3 +28,27 @@ describe('calculateCosts', function() {
     expect(user2Cost).to.deep.equal('$0');
   });
 });
+
+// ===================================================================
+describe('findRoomsByDate', function() {
+  it('Should return an array containing all rooms available for a specific date', function() {
+    const date1 = `2024/01/25`;
+    const roomsByDate = findRoomsByDate(date1, sampleRooms, sampleBookings)
+    expect(roomsByDate).to.deep.equal(roomsByDate1);
+  });
+
+  it('Should return an empty array if all rooms are booked for a specific date', function() {
+    const date2 = `2024/01/10`;
+    const roomsByDate = findRoomsByDate(date2, sampleRooms, sampleBookings2)
+    expect(roomsByDate).to.deep.equal([]);
+  });
+
+  it('Should return all rooms if there are no bookings for a specific date', function() {
+    const date2 = `2024/01/10`;
+    const roomsByDate = findRoomsByDate(date2, sampleRooms, sampleBookings)
+    expect(roomsByDate).to.deep.equal(sampleRooms);
+  });
+});
+
+// ===================================================================
+
