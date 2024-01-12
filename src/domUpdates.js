@@ -31,15 +31,9 @@ function getBookings() {
 // Event Listeners
 
 window.addEventListener('load', () => {
-  postBooking();
   getAllUsers();
   getUser(50);
   getRooms();
-  getBookings();
-})
-
-window.addEventListener('click', () => {
-  // deleteBooking(1705022740480); --> input whatever id matches the one you want to delete
   getBookings();
 })
 
