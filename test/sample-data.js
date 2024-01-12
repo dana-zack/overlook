@@ -84,13 +84,13 @@ const sampleCustomer2 = { id: 2, name: 'Nora' };
 const sampleCustomer3 = { id: 3, name: 'Megan' };
 
 // =================================================
-const customer1Bookings = [
+const sampleCustomer1Bookings = [
   { id: '123abc', userID: 1, date: '2024/01/25', roomNumber: 1 },
   { id: '456def', userID: 1, date: '2024/02/14', roomNumber: 7 },
   { id: '789ghi', userID: 1, date: '2024/02/17', roomNumber: 4 }
 ];
 
-const customer2Bookings = [];
+const sampleCustomer2Bookings = [];
 
 
 // =================================================
@@ -101,6 +101,6 @@ export {
   sampleCustomer1,
   sampleCustomer2,
   sampleCustomer3,
-  customer1Bookings,
-  customer2Bookings
+  sampleCustomer1Bookings,
+  sampleCustomer2Bookings
 }
