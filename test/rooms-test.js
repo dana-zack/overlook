@@ -1,7 +1,7 @@
 import chai from 'chai';
 const expect = chai.expect;
-import { sampleRooms, sampleBookings, sampleCustomers, sampleCustomer1, sampleCustomer2, sampleCustomer3, sampleCustomer1Bookings, sampleCustomer2Bookings, roomsByDate1, sampleBookings2 } from './sample-data'
-import { gatherBookingsByCustomer, calculateCosts, findRoomsByDate } from '../src/rooms'
+import { sampleRooms, sampleBookings, sampleCustomers, sampleCustomer1, sampleCustomer2, sampleCustomer3, sampleCustomer1Bookings, sampleCustomer2Bookings, roomsByDate1, sampleBookings2, sampleSuiteRooms } from './sample-data'
+import { gatherBookingsByCustomer, calculateCosts, findRoomsByDate, filterRoomsByType } from '../src/rooms'
 
 // ===================================================================
 describe('gatherBookingsByCustomer', function() {
@@ -51,4 +51,25 @@ describe('findRoomsByDate', function() {
 });
 
 // ===================================================================
+describe('filterRoomsByType', function() {
+  it('Should return an array of all rooms of a specified room type', function() {
+    const suiteRooms = filterRoomsByType('suite', sampleRooms)
+    expect(suiteRooms).to.deep.equal(sampleSuiteRooms)
+  });
 
+  it('Should return an empty array if no rooms match the specified room type', function() {
+    const juniorRooms = filterRoomsByType('junior suite', roomsByDate1);
+    expect(juniorRooms).to.deep.equal([]);
+  });
+});
+
+// ===================================================================
+describe('', function() {
+  it('Should...', function() {
+
+  });
+
+  it('Should...', function() {
+
+  });
+});

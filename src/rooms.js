@@ -29,9 +29,13 @@ function findRoomsByDate(date, sampleRooms, sampleBookings) {
   return availableRooms;
 }
 
+function filterRoomsByType(type, rooms) {
+  return rooms.filter(room => room.roomType === type);
+}
 
 export {
   gatherBookingsByCustomer,
   calculateCosts,
-  findRoomsByDate
+  findRoomsByDate,
+  filterRoomsByType
 }

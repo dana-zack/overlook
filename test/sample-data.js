@@ -137,6 +137,24 @@ const sampleBookings2 = [
   { id: '1617stu', userID: 4, date: '2024/01/10', roomNumber: 7 }
 ];
 
+const sampleSuiteRooms = [
+  {
+    bedSize: "queen",
+    bidet: true,
+    costPerNight: 312.05,
+    numBeds: 2,
+    number: 3,
+    roomType: "suite"
+  },
+  {
+    bedSize: "queen",
+    bidet: false,
+    costPerNight: 218.15,
+    numBeds: 1,
+    number: 7,
+    roomType: "suite"
+  }
+];
 
 
 // =================================================
@@ -150,5 +168,6 @@ export {
   sampleCustomer1Bookings,
   sampleCustomer2Bookings,
   roomsByDate1,
-  sampleBookings2
+  sampleBookings2,
+  sampleSuiteRooms
 }
