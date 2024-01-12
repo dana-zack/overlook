@@ -33,9 +33,19 @@ function filterRoomsByType(type, rooms) {
   return rooms.filter(room => room.roomType === type);
 }
 
+function addBooking(customer, room, date) {
+  const newBooking = {
+    userID: customer.id,
+    date: date,
+    roomNumber: room.number
+  };
+  return newBooking;
+}
+
 export {
   gatherBookingsByCustomer,
   calculateCosts,
   findRoomsByDate,
-  filterRoomsByType
+  filterRoomsByType,
+  addBooking
 }

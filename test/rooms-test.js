@@ -1,7 +1,7 @@
 import chai from 'chai';
 const expect = chai.expect;
-import { sampleRooms, sampleBookings, sampleCustomers, sampleCustomer1, sampleCustomer2, sampleCustomer3, sampleCustomer1Bookings, sampleCustomer2Bookings, roomsByDate1, sampleBookings2, sampleSuiteRooms } from './sample-data'
-import { gatherBookingsByCustomer, calculateCosts, findRoomsByDate, filterRoomsByType } from '../src/rooms'
+import { sampleRooms, sampleBookings, sampleCustomer1, sampleCustomer2, sampleCustomer1Bookings, sampleCustomer2Bookings, roomsByDate1, sampleBookings2, sampleSuiteRooms, sampleRoom1, sampleBooking } from './sample-data'
+import { gatherBookingsByCustomer, calculateCosts, findRoomsByDate, filterRoomsByType, addBooking } from '../src/rooms'
 
 // ===================================================================
 describe('gatherBookingsByCustomer', function() {
@@ -64,12 +64,9 @@ describe('filterRoomsByType', function() {
 });
 
 // ===================================================================
-describe('', function() {
-  it('Should...', function() {
-
-  });
-
-  it('Should...', function() {
-
+describe('addBooking', function() {
+  it('Should populate a new booking', function() {
+    const updatedBooking = addBooking(sampleCustomer1, sampleRoom1, '2024/05/10', sampleBookings);
+    expect(updatedBooking).to.deep.equal(sampleBooking)
   });
 });

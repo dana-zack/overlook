@@ -71,19 +71,9 @@ const sampleBookings = [
   { id: '2021yza', userID: 5, date: '2024/01/25', roomNumber: 4 }
 ];
 
-const sampleCustomers = [
-  { id: 1, name: 'Dana' },
-  { id: 2, name: 'Nora' },
-  { id: 3, name: 'Megan' },
-  { id: 4, name: 'Michael' },
-  { id: 5, name: 'Xavier' }
-];
-
 const sampleCustomer1 = { id: 1, name: 'Dana' };
 const sampleCustomer2 = { id: 2, name: 'Nora' };
-const sampleCustomer3 = { id: 3, name: 'Megan' };
 
-// =================================================
 const sampleCustomer1Bookings = [
   { id: '123abc', userID: 1, date: '2024/01/25', roomNumber: 1 },
   { id: '456def', userID: 1, date: '2024/02/14', roomNumber: 7 },
@@ -156,18 +146,27 @@ const sampleSuiteRooms = [
   }
 ];
 
+const sampleRoom1 = {
+  bedSize: "king",
+  bidet: true,
+  costPerNight: 358.4,
+  numBeds: 1,
+  number: 1,
+  roomType: "residential suite"
+};
 
-// =================================================
+const sampleBooking = { userID: 1, date: '2024/05/10', roomNumber: 1 };
+
 export {
   sampleRooms,
   sampleBookings,
-  sampleCustomers,
   sampleCustomer1,
   sampleCustomer2,
-  sampleCustomer3,
   sampleCustomer1Bookings,
   sampleCustomer2Bookings,
   roomsByDate1,
   sampleBookings2,
-  sampleSuiteRooms
-}
+  sampleSuiteRooms,
+  sampleRoom1,
+  sampleBooking
+};
