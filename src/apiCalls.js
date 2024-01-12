@@ -2,14 +2,14 @@
 
 function getData(url) {
   return fetch(url)
-  .then(response => {
-    if (response.ok) {
-      return response.json();
-    } else {
-      throw new Error('Unable to retrieve data from the server');
-    }
-  })
-  .catch(error => console.log(error))
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('Unable to retrieve data from the server');
+      }
+    })
+    .catch(error => console.log(error))
 }
 
 function postBooking() {
