@@ -1,9 +1,16 @@
 import chai from 'chai';
 const expect = chai.expect;
-import { sampleRooms, sampleBookings, sampleUsers, sampleUser1, sampleUser2, sampleUser3 } from './sample-data'
+import { sampleRooms, sampleBookings, sampleCustomers, sampleCustomer1, sampleCustomer2, sampleCustomer3, customer1Bookings, customer2Bookings } from './sample-data'
+import { gatherBookingsByCustomer } from '../src/rooms'
 
-describe('See if the tests are running', function() {
-  it('should return true', function() {
-    expect(true).to.equal(true);
+describe('gatherBookingsByCustomer', function() {
+  it('Should return an array of all of the bookings made by a single customer', function() {
+    const user1Bookings = gatherBookingsByCustomer(sampleCustomer1, sampleBookings)
+    expect(user1Bookings).to.deep.equal(customer1Bookings);
+  });
+
+  it('Should return an empty array if a customer does not currently have any bookings', function() {
+    const user2Bookings = gatherBookingsByCustomer(sampleCustomer2, sampleBookings)
+    expect(user2Bookings).to.deep.equal(customer2Bookings);
   });
 });

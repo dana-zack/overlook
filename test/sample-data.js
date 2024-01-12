@@ -61,29 +61,46 @@ const sampleRooms = [
 
 const sampleBookings = [
   { id: '123abc', userID: 1, date: '2024/01/25', roomNumber: 1 },
-  { id: '456def', userID: 2, date: '2024/02/14', roomNumber: 7 },
-  { id: '789ghi', userID: 3, date: '2024/02/17', roomNumber: 4 },
-  { id: '1011jkl', userID: 4, date: '2024/03/08', roomNumber: 3 },
-  { id: '1213mno', userID: 5, date: '2024/04/22', roomNumber: 5 }
+  { id: '456def', userID: 1, date: '2024/02/14', roomNumber: 7 },
+  { id: '789ghi', userID: 1, date: '2024/02/17', roomNumber: 4 },
+  { id: '1011jkl', userID: 3, date: '2024/03/08', roomNumber: 3 },
+  { id: '1213mno', userID: 3, date: '2024/04/22', roomNumber: 5 },
+  { id: '1415pqr', userID: 3, date: '2024/04/18', roomNumber: 6 },
+  { id: '1617stu', userID: 4, date: '2024/03/09', roomNumber: 2 },
+  { id: '1819vwx', userID: 5, date: '2024/02/12', roomNumber: 5 },
+  { id: '2021yza', userID: 5, date: '2024/04/01', roomNumber: 4 },
 ];
 
-const sampleUsers = [
+const sampleCustomers = [
   { id: 1, name: 'Dana' },
   { id: 2, name: 'Nora' },
   { id: 3, name: 'Megan' },
-  { id: 5, name: 'Michael' },
-  { id: 6, name: 'Xavier' }
+  { id: 4, name: 'Michael' },
+  { id: 5, name: 'Xavier' }
 ];
 
-const sampleUser1 = { id: 1, name: 'Dana' };
-const sampleUser2 = { id: 2, name: 'Nora' };
-const sampleUser3 = { id: 3, name: 'Megan' };
+const sampleCustomer1 = { id: 1, name: 'Dana' };
+const sampleCustomer2 = { id: 2, name: 'Nora' };
+const sampleCustomer3 = { id: 3, name: 'Megan' };
 
+// =================================================
+const customer1Bookings = [
+  { id: '123abc', userID: 1, date: '2024/01/25', roomNumber: 1 },
+  { id: '456def', userID: 1, date: '2024/02/14', roomNumber: 7 },
+  { id: '789ghi', userID: 1, date: '2024/02/17', roomNumber: 4 }
+];
+
+const customer2Bookings = [];
+
+
+// =================================================
 export {
   sampleRooms,
   sampleBookings,
-  sampleUsers,
-  sampleUser1,
-  sampleUser2,
-  sampleUser3
+  sampleCustomers,
+  sampleCustomer1,
+  sampleCustomer2,
+  sampleCustomer3,
+  customer1Bookings,
+  customer2Bookings
 }
