@@ -28,49 +28,53 @@
           <button class="main-button" id="book-stay-btn">Book a Stay</button>
         </section>
       </section>
-      <section class="my-bookings-view">
+      <section class="my-bookings-view hidden">
         <h2>My Bookings:</h2>
-        <section class="booking-cards-container">
+        <section class="booked-cards-container">
           <!-- logged in user's booked room cards will populate here -->
-          <article class="booking-card">
+          <article class="booked-card">
             <h3>Date: 2024/01/20</h3>
-            <img class="booking-card-img" src='../images/welcome-page-background.jpg'>
+            <img class="booked-card-img" src='../images/welcome-page-background.jpg'>
             <p class="room-type">Suite</p>
           </article>
-          <article class="booking-card">
+          <article class="booked-card">
             <h3>Date: 2024/01/20</h3>
-            <img class="booking-card-img" src='../images/welcome-page-background.jpg'>
+            <img class="booked-card-img" src='../images/welcome-page-background.jpg'>
             <p class="room-type">Suite</p>
           </article>
-          <article class="booking-card">
+          <article class="booked-card">
             <h3>Date: 2024/01/20</h3>
-            <img class="booking-card-img" src='../images/welcome-page-background.jpg'>
+            <img class="booked-card-img" src='../images/welcome-page-background.jpg'>
             <p class="room-type">Suite</p>
           </article>
-          <article class="booking-card">
+          <article class="booked-card">
             <h3>Date: 2024/01/20</h3>
-            <img class="booking-card-img" src='../images/welcome-page-background.jpg'>
+            <img class="booked-card-img" src='../images/welcome-page-background.jpg'>
             <p class="room-type">Suite</p>
           </article>
-          <article class="booking-card">
+          <article class="booked-card">
             <h3>Date: 2024/01/20</h3>
-            <img class="booking-card-img" src='../images/welcome-page-background.jpg'>
+            <img class="booked-card-img" src='../images/welcome-page-background.jpg'>
             <p class="room-type">Suite</p>
           </article>
         </section>
         <button class="main-button">Back to Home</button>
       </section>
-      <section class="add-booking-view hidden">
+      <section class="search-available-view">
         <h2>Search for Rooms:</h2>
-        <section class="search-form">
-
-        </section>
-        <section class="available-room-cards">
-          <!-- available room cards will populate here -->
-        </section>
+        <form class="search-available-form">
+          <label for="date" style="display: block; margin-bottom: 10px;">
+            Enter a date (YYYY/MM/DD):
+          </label>
+          <div class="search-container">
+            <input type="text" name="date" id="date" pattern="\d{4}/\d{2}/\d{2}" required>
+            <button class="search-button">Search</button>
+          </div>
+        </form>
       </section>
-      <section class="modal hidden">
-
+      <section class="rooms-by-date-view hidden">
+      </section>
+      <section class="room-details-view hidden">
       </section>
     </main>
   </div>

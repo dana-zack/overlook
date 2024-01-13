@@ -34,9 +34,7 @@ h1 {
 
 }
 
-/* ALL PAGE VIEWS */
-
-/* WELCOME PAGE VIEW */
+/* WELCOME VIEW */
 
 .welcome-view {
   margin: 100px;
@@ -66,13 +64,13 @@ h2 {
   font-weight: 400;
 }
 
-.main-button:hover, .booking-card:hover {
+.main-button:hover, .booked-card:hover, .available-card:hover, .search-button:hover {
   background-color: aliceblue;
   border: 2px solid black;
   cursor: pointer;
 }
 
-/* MY BOOKINGS PAGE VIEW */
+/* MY BOOKINGS VIEW */
 
 .my-bookings-view {
   display: flex;
@@ -80,7 +78,7 @@ h2 {
   align-items: center;
 }
 
-.booking-cards-container { 
+.booked-cards-container, .available-cards-container { 
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 2fr));
   gap: 20px;
@@ -89,7 +87,7 @@ h2 {
   min-height: 20vh;
 }
 
-.booking-card {
+.booked-card, .available-card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -98,13 +96,47 @@ h2 {
   margin: 10px;
 }
 
-.booking-card-img {
+.booked-card-img {
   width: 80%;
 }
 
-/* BOOK A STAY PAGE VIEW */
+/* ADD BOOKING VIEW */
 
+.search-available-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.search-available-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+}
+
+#date {
+  background-color: lightgrey;
+  padding: 5px;
+  border-radius: 5px; 
+  border: 1px solid #ccc;
+  margin-right: 10px;
+}
+
+.search-button {
+  width: 90px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(179, 200, 218);
+  font-size: 1em;
+  font-weight: 400;
+}
+
+/* ROOM DETAILS VIEW */
 
 /* OTHER */
 
