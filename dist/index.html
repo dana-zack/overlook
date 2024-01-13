@@ -9,41 +9,69 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class=>
   <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
   <!-- <img src='./images/welcome-page-background.jpg' alt="welcome background"> -->
   <div class="page">
-    <div class="overlay"></div>
+    <!-- <div class="overlay"></div> -->
     <header>
       <h1>Overlook Hotel</h1>
       <!-- <nav class="nav-bar"></nav> -->
     </header>
     <main>
-      <article class="log-in view hidden">
-      </article>
-      <article class="welcome view">
+      <section class="log-in-view hidden">
+      </section>
+      <section class="welcome-view hidden">
         <h2 class="welcome-message">Welcome, Katya</h2>
         <section class="main-button-container">
           <button class="main-button" id="my-bookings-btn">My Bookings</button>
           <button class="main-button" id="book-stay-btn">Book a Stay</button>
         </section>
-      </article>
-      <article class="my-bookings view hidden">
-        <section class="my-booking-cards">
+      </section>
+      <section class="my-bookings-view">
+        <h2>My Bookings:</h2>
+        <section class="booking-cards-container">
           <!-- logged in user's booked room cards will populate here -->
+          <article class="booking-card">
+            <h3>Date: 2024/01/20</h3>
+            <img class="booking-card-img" src='../images/welcome-page-background.jpg'>
+            <p class="room-type">Suite</p>
+          </article>
+          <article class="booking-card">
+            <h3>Date: 2024/01/20</h3>
+            <img class="booking-card-img" src='../images/welcome-page-background.jpg'>
+            <p class="room-type">Suite</p>
+          </article>
+          <article class="booking-card">
+            <h3>Date: 2024/01/20</h3>
+            <img class="booking-card-img" src='../images/welcome-page-background.jpg'>
+            <p class="room-type">Suite</p>
+          </article>
+          <article class="booking-card">
+            <h3>Date: 2024/01/20</h3>
+            <img class="booking-card-img" src='../images/welcome-page-background.jpg'>
+            <p class="room-type">Suite</p>
+          </article>
+          <article class="booking-card">
+            <h3>Date: 2024/01/20</h3>
+            <img class="booking-card-img" src='../images/welcome-page-background.jpg'>
+            <p class="room-type">Suite</p>
+          </article>
         </section>
-      </article>
-      <article class="add-booking view hidden">
-        <section class="form">
+        <button class="main-button">Back to Home</button>
+      </section>
+      <section class="add-booking-view hidden">
+        <h2>Search for Rooms:</h2>
+        <section class="search-form">
 
         </section>
         <section class="available-room-cards">
           <!-- available room cards will populate here -->
         </section>
-      </article>
-      <article class="modal hidden">
+      </section>
+      <section class="modal hidden">
 
-      </article>
+      </section>
     </main>
   </div>
   <script src="bundle.js"></script>
