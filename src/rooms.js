@@ -1,6 +1,6 @@
 function gatherBookingsByCustomer(customer, allBookings) {
   return allBookings.filter(booking => booking.userID === customer.id);
-};
+}
 
 function calculateCosts(customerBookings, sampleRooms) {
   const totalCost = customerBookings.reduce((acc, booking) => {
@@ -11,7 +11,7 @@ function calculateCosts(customerBookings, sampleRooms) {
     return acc;
   }, 0);
   return `$${totalCost.toLocaleString('en-US')}`;
-};
+}
 
 function findRoomsByDate(date, sampleRooms, sampleBookings) {
   const bookedRoomsByDate = sampleBookings.filter(booking => {
@@ -36,7 +36,7 @@ function filterRoomsByType(type, rooms) {
 function addBooking(customer, room, date) {
   const newBooking = {
     userID: customer.id,
-    date: date,
+    date,
     roomNumber: room.number
   };
   return newBooking;

@@ -5,12 +5,47 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Webpack Starter Kit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
-  <script src="bundle.js"></script>
+  <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
+  <!-- <img src='./images/welcome-page-background.jpg' alt="welcome background"> -->
+  <div class="page">
+    <div class="overlay"></div>
+    <header>
+      <h1>Overlook Hotel</h1>
+      <!-- <nav class="nav-bar"></nav> -->
+    </header>
+    <main>
+      <article class="log-in view hidden">
+      </article>
+      <article class="welcome view">
+        <h2 class="welcome-message">Welcome, Katya</h2>
+        <section class="main-button-container">
+          <button class="main-button" id="my-bookings-btn">My Bookings</button>
+          <button class="main-button" id="book-stay-btn">Book a Stay</button>
+        </section>
+      </article>
+      <article class="my-bookings view hidden">
+        <section class="my-booking-cards">
+          <!-- logged in user's booked room cards will populate here -->
+        </section>
+      </article>
+      <article class="add-booking view hidden">
+        <section class="form">
 
+        </section>
+        <section class="available-room-cards">
+          <!-- available room cards will populate here -->
+        </section>
+      </article>
+      <article class="modal hidden">
+
+      </article>
+    </main>
+  </div>
+  <script src="bundle.js"></script>
 </body>
 </html>
