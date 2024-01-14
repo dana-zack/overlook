@@ -46,6 +46,7 @@ h2 {
   font-size: 2.5em;
   letter-spacing: 0.1em;
   font-weight: 300;
+  margin: 30px 0 0;
 }
 
 .main-button-container {
@@ -72,10 +73,16 @@ h2 {
 
 /* MY BOOKINGS VIEW */
 
-.my-bookings-view {
+.my-bookings-view, .rooms-by-date-view {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.my-bookings-message, .rooms-by-date-message, .rooms-by-filter-message {
+  font-size: 23px;
+  /* color: white; */
+  margin: 10px 0 0;
 }
 
 .booked-cards-container, .available-cards-container { 
@@ -85,6 +92,7 @@ h2 {
   width: 95%;
   /* border: 2px solid black; */
   min-height: 20vh;
+  margin-bottom: 20px;
 }
 
 .booked-card, .available-card {
@@ -100,7 +108,7 @@ h2 {
   width: 80%;
 }
 
-/* ADD BOOKING VIEW */
+/* SEARCH AVAILABLE VIEW */
 
 .search-available-view {
   display: flex;
@@ -114,6 +122,11 @@ h2 {
   align-items: center;
 }
 
+.date-label {
+  font-size: 25px;
+  margin: 30px 0 10px;
+}
+
 .search-container {
   display: flex;
   justify-content: center;
@@ -122,18 +135,51 @@ h2 {
 #date {
   background-color: lightgrey;
   padding: 5px;
-  border-radius: 5px; 
+  border-radius: 7px; 
   border: 1px solid #ccc;
   margin-right: 10px;
+  width: 70%;
+  height: 40px;
+  font-size: 20px;
 }
 
 .search-button {
-  width: 90px;
+  width: 40%;
   border: none;
-  border-radius: 5px;
+  border-radius: 7px;
   background-color: rgb(179, 200, 218);
-  font-size: 1em;
+  font-size: 1.4em;
   font-weight: 400;
+}
+
+#main-on-search {
+  margin: 10%;
+}
+
+/* ROOMS BY DATE VIEW */
+
+.filter-container {
+  display: flex;
+  justify-content: center;
+  width: 40%;
+}
+
+.filter-label {
+  font-size: 23px;
+  margin: 10px 5px;
+  padding: 5px;
+}
+
+#filter-drop-down {
+  font-size: 23px;
+  margin: 10px;
+  width: 40%;
+  border-radius: 1em;
+  padding: 5px;
+}
+
+#filter-drop-down:hover {
+  cursor: pointer;
 }
 
 /* ROOM DETAILS VIEW */
