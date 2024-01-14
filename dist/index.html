@@ -19,19 +19,20 @@
       <!-- <nav class="nav-bar"></nav> -->
     </header>
     <main>
-      <section class="log-in-view hidden">
+      <section class="login-view hidden">
+        <button class="main-btn" id="login-btn">Login</button>
       </section>
       <section class="welcome-view hidden">
-        <h2 class="welcome-message">Welcome, Katya</h2>
-        <section class="main-button-container">
-          <button class="main-button" id="my-bookings-btn">My Bookings</button>
-          <button class="main-button" id="book-stay-btn">Book a Stay</button>
+        <h2 class="welcome-message">Welcome, ''</h2>
+        <section class="main-btn-container">
+          <button class="main-btn" id="my-bookings-btn">My Bookings</button>
+          <button class="main-btn" id="book-stay-btn-1">Book a Stay</button>
         </section>
       </section>
-      <section class="my-bookings-view hidden">
+      <section class="my-bookings-view">
         <h2>My Bookings:</h2>
-        <p class="my-bookings-message">You do not currently have any bookings.</p>
-        <section class="booked-cards-container">
+        <p class="no-bookings-message">You do not currently have any bookings.</p>
+        <section class="my-bookings-container">
           <!-- logged in user's booked room cards will populate here -->
           <article class="booked-card">
             <h3>Date: 2024/01/20</h3>
@@ -60,8 +61,8 @@
           </article>
         </section>
         <section>
-          <button class="main-button">Back to Home</button>
-          <button class="main-button">Book a Stay</button>
+          <button class="main-btn" id="home-btn-1">Back to Home</button>
+          <button class="main-btn" id="book-stay-btn-2">Book a Stay</button>
         </section>
       </section>
       <section class="search-available-view hidden">
@@ -72,13 +73,13 @@
           </label>
           <div class="search-container">
             <input type="text" name="date" id="date" pattern="\d{4}/\d{2}/\d{2}" required>
-            <button class="search-button">Search</button>
+            <button id="search-btn">Search</button>
           </div>
         </form>
-        <button class="main-button" id="main-on-search">Back to Home</button>
+        <button class="main-btn" id="home-btn-2">Back to Home</button>
       </section>
       <section class="rooms-by-date-view hidden">
-        <h2>Rooms available on 2024/03/02:</h2>
+        <h2 class="available-rooms-title">Rooms available on '_____':</h2>
         <form class="filter-container">
           <label class="filter-label" for="filter-drop-down">Filter by room type:</label>
           <select id="filter-drop-down">
@@ -89,18 +90,18 @@
             <option>Single Room</option>
           </select>
         </form>
-        <p class="rooms-by-filter-message">Our deepest apologies. No rooms are available on this date. We welcome you to try another date.</p>
+        <p class="no-rooms-message">Our deepest apologies. No rooms are available. We welcome you to try again.</p>
         <section class="available-cards-container">
           <!-- available room cards will populate here -->
-          <article class="available-card">
+          <!-- <article class="available-card">
             <h3>Residential Suite</h3>
             <img class="booked-card-img" src='../images/welcome-page-background.jpg'>
             <p class="room-type">Suite</p>
-          </article>
+          </article> -->
         </section>
         <section>
-          <button class="main-button">Back to Home</button>
-          <button class="main-button">Try Again</button>
+          <button class="main-btn" id="home-btn-3">Back to Home</button>
+          <button class="main-btn" id="book-stay-btn-3">Try Again</button>
         </section>
       </section>
       <section class="room-details-view hidden">
