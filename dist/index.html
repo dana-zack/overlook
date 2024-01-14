@@ -5,12 +5,108 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Webpack Starter Kit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
+<body class=>
+  <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
+  <!-- <img src='./images/welcome-page-background.jpg' alt="welcome background"> -->
+  <div class="page">
+    <!-- <div class="overlay"></div> -->
+    <header>
+      <h1>Overlook Hotel</h1>
+      <!-- <nav class="nav-bar"></nav> -->
+    </header>
+    <main>
+      <section class="log-in-view hidden">
+      </section>
+      <section class="welcome-view hidden">
+        <h2 class="welcome-message">Welcome, Katya</h2>
+        <section class="main-button-container">
+          <button class="main-button" id="my-bookings-btn">My Bookings</button>
+          <button class="main-button" id="book-stay-btn">Book a Stay</button>
+        </section>
+      </section>
+      <section class="my-bookings-view hidden">
+        <h2>My Bookings:</h2>
+        <p class="my-bookings-message">You do not currently have any bookings.</p>
+        <section class="booked-cards-container">
+          <!-- logged in user's booked room cards will populate here -->
+          <article class="booked-card">
+            <h3>Date: 2024/01/20</h3>
+            <img class="booked-card-img" src='../images/welcome-page-background.jpg'>
+            <p class="room-type">Suite</p>
+          </article>
+          <article class="booked-card">
+            <h3>Date: 2024/01/20</h3>
+            <img class="booked-card-img" src='../images/welcome-page-background.jpg'>
+            <p class="room-type">Suite</p>
+          </article>
+          <article class="booked-card">
+            <h3>Date: 2024/01/20</h3>
+            <img class="booked-card-img" src='../images/welcome-page-background.jpg'>
+            <p class="room-type">Suite</p>
+          </article>
+          <article class="booked-card">
+            <h3>Date: 2024/01/20</h3>
+            <img class="booked-card-img" src='../images/welcome-page-background.jpg'>
+            <p class="room-type">Suite</p>
+          </article>
+          <article class="booked-card">
+            <h3>Date: 2024/01/20</h3>
+            <img class="booked-card-img" src='../images/welcome-page-background.jpg'>
+            <p class="room-type">Suite</p>
+          </article>
+        </section>
+        <section>
+          <button class="main-button">Back to Home</button>
+          <button class="main-button">Book a Stay</button>
+        </section>
+      </section>
+      <section class="search-available-view hidden">
+        <h2>Search for Rooms:</h2>
+        <form class="search-available-form">
+          <label class="date-label" for="date">
+            Enter a date (YYYY/MM/DD):
+          </label>
+          <div class="search-container">
+            <input type="text" name="date" id="date" pattern="\d{4}/\d{2}/\d{2}" required>
+            <button class="search-button">Search</button>
+          </div>
+        </form>
+        <button class="main-button" id="main-on-search">Back to Home</button>
+      </section>
+      <section class="rooms-by-date-view hidden">
+        <h2>Rooms available on 2024/03/02:</h2>
+        <form class="filter-container">
+          <label class="filter-label" for="filter-drop-down">Filter by room type:</label>
+          <select id="filter-drop-down">
+            <option default>Select</option>
+            <option>Residential Suite</option>
+            <option>Suite</option>
+            <option>Junior Suite</option>
+            <option>Single Room</option>
+          </select>
+        </form>
+        <p class="rooms-by-filter-message">Our deepest apologies. No rooms are available on this date. We welcome you to try another date.</p>
+        <section class="available-cards-container">
+          <!-- available room cards will populate here -->
+          <article class="available-card">
+            <h3>Residential Suite</h3>
+            <img class="booked-card-img" src='../images/welcome-page-background.jpg'>
+            <p class="room-type">Suite</p>
+          </article>
+        </section>
+        <section>
+          <button class="main-button">Back to Home</button>
+          <button class="main-button">Try Again</button>
+        </section>
+      </section>
+      <section class="room-details-view hidden">
+      </section>
+    </main>
+  </div>
   <script src="bundle.js"></script>
-
 </body>
 </html>
