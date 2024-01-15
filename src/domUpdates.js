@@ -51,6 +51,7 @@ loginBtn.addEventListener('click', () => {
 
 myBookingsBtn.addEventListener('click', () => {
   switchToView(myBookingsView);
+  viewBookings()
 })
 
 homeBtn.addEventListener('click', () => {
@@ -99,6 +100,28 @@ filterMenu.addEventListener('change', () => {
 // });
 
 // Functions
+function displayBookings(customerBookings) {
+  myBookingsSection.innerHTML = '';
+  if (customerBookings.length === 0) {
+    noBookingsMessage.classList.remove('hidden');
+  } else {
+    noBookingsMessage.classList.add('hidden');
+    customerBookings.forEach(booking => {
+      myBookingsSection.innerHTML += `
+      <article class="booked-card">
+        <h3>${booking.date}</h3>
+        <p class="booking-num">Room #${booking.roomNumber}</p>
+        <button class="cancel-btn">Cancel booking</button>
+      </article>`;
+    });
+  }
+}
+
+function viewBookings() {
+  const customerBookings = gatherBookingsByCustomer(customer, bookings)
+  displayBookings(customerBookings)
+}
+
 function completeBooking() {
   updateCurrentRoom(selectedRoom);
   const newBooking = addBooking(customer, currentRoom, selectedDate);
@@ -119,8 +142,8 @@ function displayRooms(availableRooms) {
   if (availableRooms.length === 0) {
     noRoomsMessage.classList.remove('hidden');
   } else {
+    noRoomsMessage.classList.add('hidden');
     availableRooms.forEach(room => {
-      noRoomsMessage.classList.add('hidden');
       availableRoomsSection.innerHTML += `
       <article class="available-card">
         <h3>Room #${room.number}</h3>

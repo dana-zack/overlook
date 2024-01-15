@@ -10,6 +10,5 @@ import './images/turing-logo.png'
 import { getAllUsers, getUser, getRooms, getBookings } from './domUpdates'
 import { getData, postBooking, deleteBooking } from './apiCalls'
 
-
 console.log('This is the JavaScript entry file - your code begins here.');
 console.log('hi')
