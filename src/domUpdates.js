@@ -84,9 +84,17 @@ bookStayBtn3.addEventListener('click', () => {
   switchToView(searchView)
 })
 
-searchBtn.addEventListener('click', () => {
-  selectedDate = input.value
-  // console.log(selectedDate)
+searchBtn.addEventListener('click', (event) => {
+  event.preventDefault()
+  if (!input.value) {
+    return
+  }
+  if (checkDateValidity(input.value)) {
+    console.log('check')
+    return
+  }
+  selectedDate = input.value.replaceAll("-", "/")
+  console.log(selectedDate)
   switchToView(roomsView)
   availableRoomsTitle.innerText = `Rooms available on ${selectedDate}`
   availableRooms = findRoomsByDate(selectedDate, rooms, bookings)
@@ -135,7 +143,14 @@ function displayRooms(availableRooms) {
   }
 }
 
-
+function checkDateValidity(date) {
+  const userInput = new Date(date)
+  const currentDate = new Date()
+  console.log(userInput)
+  console.log(currentDate)
+  currentDate.setHours(0, 0, 0, 0)
+  return userInput < currentDate
+}
 
 function switchToView(view) {
   hideAllViews();
@@ -157,6 +172,8 @@ function hide(element) {
 function show(element) {
   element.classList.remove('hidden')
 }
+
+
 
 // Data Retrieval & Assignment
 
@@ -190,8 +207,6 @@ function getBookings() {
 // }
 
 // ============================================================
-// noRoomsMessage.style.color = 'white'
-// noBookingsMessage.style.color = 'white'
 
 export {
   // getAllUsers,

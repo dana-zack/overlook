@@ -34,7 +34,7 @@
         <p class="no-bookings-message">You do not currently have any bookings.</p>
         <section class="my-bookings-container">
           <!-- logged in user's booked room cards will populate here -->
-          <article class="booked-card">
+          <!-- <article class="booked-card">
             <h3>Date: 2024/01/20</h3>
             <img class="booked-card-img" src='../images/welcome-page-background.jpg'>
             <p class="room-type">Suite</p>
@@ -58,7 +58,7 @@
             <h3>Date: 2024/01/20</h3>
             <img class="booked-card-img" src='../images/welcome-page-background.jpg'>
             <p class="room-type">Suite</p>
-          </article>
+          </article> -->
         </section>
         <section>
           <button class="main-btn" id="home-btn-1">Back to Home</button>
@@ -72,7 +72,7 @@
             Enter a date (YYYY/MM/DD):
           </label>
           <div class="search-container">
-            <input type="text" name="date" id="date" pattern="\d{4}/\d{2}/\d{2}" required>
+            <input type="date" min="2024-01-14" max="2030-01-01" name="date" id="date" value="2021-01-14" required>
             <button id="search-btn">Search</button>
           </div>
         </form>
