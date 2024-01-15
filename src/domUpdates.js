@@ -1,13 +1,13 @@
 import { getData, postBooking, deleteBooking } from './apiCalls'
 
-// Selectors for views
+// Selectors: views
 let loginView = document.querySelector('.login-view')
 let welcomeView = document.querySelector('.welcome-view')
 let myBookingsView = document.querySelector('.my-bookings-view')
-let searchAvailableView = document.querySelector('.search-available-view')
-let roomsByDateView = document.querySelector('.rooms-by-date-view')
+let searchView = document.querySelector('.search-view')
+let roomsView = document.querySelector('.rooms-view')
 
-// Selector for buttons
+// Selectors: buttons
 let loginBtn = document.querySelector('#login-btn')
 let myBookingsBtn = document.querySelector('#my-bookings-btn')
 let homeBtn1 = document.querySelector('#home-btn-1')
@@ -17,6 +17,9 @@ let bookStayBtn1 = document.querySelector('#book-stay-btn-1')
 let bookStayBtn2 = document.querySelector('#book-stay-btn-2')
 let bookStayBtn3 = document.querySelector('#book-stay-btn-3')
 let searchBtn = document.querySelector('#search-btn')
+let date = document.querySelector('#date')
+
+// Selectors: additional
 let availableRoomsSection = document.querySelector('.available-cards-container')
 let myBookingsSection = document.querySelector('.my-bookings-container')
 let availableRoomsTitle = document.querySelector('.available-rooms-title')
@@ -37,47 +40,48 @@ window.addEventListener('load', () => {
   getUser(50);
   getRooms();
   getBookings();
-  welcomeMessage.innerText = 'Welcome, Katya';
   availableRoomsTitle.innerText = `Rooms available on ${selectedDate}`
-  noRoomsMessage.style.color = 'white'
-  noBookingsMessage.style.color = 'white'
-  switchToView(roomsByDateView)
+  // noRoomsMessage.style.color = 'white'
+  // noBookingsMessage.style.color = 'white'
 })
 
 loginBtn.addEventListener('click', () => {
-  console.log(customer)
+   switchToView(welcomeView)
+   welcomeMessage.innerText = `Welcome, ${customer.name}`;
 })
 
 myBookingsBtn.addEventListener('click', () => {
-  console.log(customer)
+  switchToView(myBookingsView)
 })
 
 homeBtn1.addEventListener('click', () => {
-  console.log(customer)
+  switchToView(welcomeView)
 })
 
 homeBtn2.addEventListener('click', () => {
-  console.log(customer)
+  switchToView(welcomeView)
 })
 
 homeBtn3.addEventListener('click', () => {
-  console.log(customer)
+  switchToView(welcomeView)
 })
 
 bookStayBtn1.addEventListener('click', () => {
-  console.log(customer)
+  switchToView(searchView)
 })
 
 bookStayBtn2.addEventListener('click', () => {
-  console.log(customer)
+  switchToView(searchView)
 })
 
 bookStayBtn3.addEventListener('click', () => {
-  console.log(customer)
+  switchToView(searchView)
 })
 
 searchBtn.addEventListener('click', () => {
-  console.log(customer)
+  if (date.input) {
+    switchToView(roomsView)
+  }
 })
 
 availableRoomsSection.addEventListener('click', (event) => {
@@ -97,6 +101,7 @@ filterMenu.addEventListener('change', () => {
 })
 
 // Functions
+
 function switchToView(view) {
   hideAllViews();
   show(view)
@@ -106,8 +111,8 @@ function hideAllViews() {
   hide(loginView);
   hide(welcomeView);
   hide(myBookingsView);
-  hide(searchAvailableView);
-  hide(roomsByDateView);
+  hide(searchView);
+  hide(roomsView);
 }
 
 function hide(element) {
