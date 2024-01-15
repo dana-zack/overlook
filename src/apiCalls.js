@@ -12,11 +12,11 @@ function getData(url) {
     .catch(error => console.log(error))
 }
 
-function postBooking() {
+function postBooking(newBooking) {
   fetch('http://localhost:3001/api/v1/bookings', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ "userID": 48, "date": "2019/09/23", "roomNumber": 4 })
+    body: JSON.stringify(newBooking)
     // will need to refactor this to not have it hard-coded
   })
     .then(response => {

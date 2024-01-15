@@ -9,31 +9,30 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class=>
-  <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
-  <!-- <img src='./images/welcome-page-background.jpg' alt="welcome background"> -->
+<body>
   <div class="page">
     <!-- <div class="overlay"></div> -->
     <header>
       <h1>Overlook Hotel</h1>
-      <!-- <nav class="nav-bar"></nav> -->
+      <nav class="nav-bar hidden">
+        <button id="nav-home-btn" class="main-btn">Home</button>
+        <button id="nav-bookings-btn" class="main-btn">My Bookings</button>
+        <button id="nav-rooms-btn" class="main-btn">Book a Stay</button>
+      </nav>
     </header>
     <main>
-      <section class="log-in-view hidden">
+      <section class="login-view">
+        <button class="main-btn" id="login-btn">Login</button>
       </section>
       <section class="welcome-view hidden">
-        <h2 class="welcome-message">Welcome, Katya</h2>
-        <section class="main-button-container">
-          <button class="main-button" id="my-bookings-btn">My Bookings</button>
-          <button class="main-button" id="book-stay-btn">Book a Stay</button>
-        </section>
+        <h2 class="welcome-message">Welcome, ''</h2>
       </section>
       <section class="my-bookings-view hidden">
         <h2>My Bookings:</h2>
-        <p class="my-bookings-message">You do not currently have any bookings.</p>
-        <section class="booked-cards-container">
+        <p class="no-bookings-message hidden">You do not currently have any bookings.</p>
+        <section class="my-bookings-container">
           <!-- logged in user's booked room cards will populate here -->
-          <article class="booked-card">
+          <!-- <article class="booked-card">
             <h3>Date: 2024/01/20</h3>
             <img class="booked-card-img" src='../images/welcome-page-background.jpg'>
             <p class="room-type">Suite</p>
@@ -57,53 +56,41 @@
             <h3>Date: 2024/01/20</h3>
             <img class="booked-card-img" src='../images/welcome-page-background.jpg'>
             <p class="room-type">Suite</p>
-          </article>
-        </section>
-        <section>
-          <button class="main-button">Back to Home</button>
-          <button class="main-button">Book a Stay</button>
+          </article> -->
         </section>
       </section>
-      <section class="search-available-view hidden">
+      <section class="search-view hidden">
         <h2>Search for Rooms:</h2>
-        <form class="search-available-form">
+        <form class="search-form">
           <label class="date-label" for="date">
-            Enter a date (YYYY/MM/DD):
+            Please enter a date:
           </label>
           <div class="search-container">
-            <input type="text" name="date" id="date" pattern="\d{4}/\d{2}/\d{2}" required>
-            <button class="search-button">Search</button>
+            <input type="date" min="2024-01-14" max="2030-01-01" name="date" id="date" required>
+            <button id="search-btn">Search</button>
           </div>
         </form>
-        <button class="main-button" id="main-on-search">Back to Home</button>
       </section>
-      <section class="rooms-by-date-view hidden">
-        <h2>Rooms available on 2024/03/02:</h2>
+      <section class="rooms-view hidden">
+        <h2 class="available-rooms-title">Rooms available on '_____':</h2>
         <form class="filter-container">
           <label class="filter-label" for="filter-drop-down">Filter by room type:</label>
           <select id="filter-drop-down">
-            <option default>Select</option>
-            <option>Residential Suite</option>
-            <option>Suite</option>
-            <option>Junior Suite</option>
-            <option>Single Room</option>
+            <option default>select</option>
+            <option>residential suite</option>
+            <option>suite</option>
+            <option>junior suite</option>
+            <option>single room</option>
           </select>
         </form>
-        <p class="rooms-by-filter-message">Our deepest apologies. No rooms are available on this date. We welcome you to try another date.</p>
+        <p class="no-rooms-message hidden">Our deepest apologies. No rooms are available. We welcome you to adjust your search and try again.</p>
         <section class="available-cards-container">
           <!-- available room cards will populate here -->
-          <article class="available-card">
-            <h3>Residential Suite</h3>
-            <img class="booked-card-img" src='../images/welcome-page-background.jpg'>
-            <p class="room-type">Suite</p>
-          </article>
-        </section>
-        <section>
-          <button class="main-button">Back to Home</button>
-          <button class="main-button">Try Again</button>
         </section>
       </section>
-      <section class="room-details-view hidden">
+      <section class="confirmation-view hidden">
+        <h2>Congratulations!</h2>
+        <p class="confirmation-message">You have successfully booked room #_____ for the evening of _____. We look forward to your stay!</p>
       </section>
     </main>
   </div>

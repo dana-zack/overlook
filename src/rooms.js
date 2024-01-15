@@ -30,14 +30,15 @@ function findRoomsByDate(date, sampleRooms, sampleBookings) {
 }
 
 function filterRoomsByType(type, rooms) {
+  if (type === 'select') return rooms
   return rooms.filter(room => room.roomType === type);
 }
 
-function addBooking(customer, room, date) {
+function addBooking(customer, currentRoom, date) {
   const newBooking = {
     userID: customer.id,
     date,
-    roomNumber: room.number
+    roomNumber: currentRoom.number
   };
   return newBooking;
 }
