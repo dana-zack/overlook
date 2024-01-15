@@ -199,12 +199,6 @@ h2 {
   cursor: pointer;
 }
 
-.available-card:hover {
-  /* background-color: aliceblue; */
-  /* border: 2px solid black; */
-  /* cursor: pointer; */
-}
-
 .details-container {
   width: 85%;
   display: flex;
