@@ -9,14 +9,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class=>
-  <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
-  <!-- <img src='./images/welcome-page-background.jpg' alt="welcome background"> -->
+<body>
   <div class="page">
     <!-- <div class="overlay"></div> -->
     <header>
       <h1>Overlook Hotel</h1>
-      <!-- <nav class="nav-bar"></nav> -->
+      <nav class="nav-bar hidden">
+        <button id="nav-home-btn" class="main-btn">Home</button>
+        <button id="nav-bookings-btn" class="main-btn">My Bookings</button>
+        <button id="nav-rooms-btn" class="main-btn">Book a Stay</button>
+      </nav>
     </header>
     <main>
       <section class="login-view">
@@ -24,14 +26,10 @@
       </section>
       <section class="welcome-view hidden">
         <h2 class="welcome-message">Welcome, ''</h2>
-        <section class="main-btn-container">
-          <button class="main-btn" id="my-bookings-btn">My Bookings</button>
-          <button class="main-btn" id="book-stay-btn-1">Book a Stay</button>
-        </section>
       </section>
       <section class="my-bookings-view hidden">
         <h2>My Bookings:</h2>
-        <p class="no-bookings-message">You do not currently have any bookings.</p>
+        <p class="no-bookings-message hidden">You do not currently have any bookings.</p>
         <section class="my-bookings-container">
           <!-- logged in user's booked room cards will populate here -->
           <!-- <article class="booked-card">
@@ -60,23 +58,18 @@
             <p class="room-type">Suite</p>
           </article> -->
         </section>
-        <section>
-          <button class="main-btn" id="home-btn-1">Back to Home</button>
-          <button class="main-btn" id="book-stay-btn-2">Book a Stay</button>
-        </section>
       </section>
       <section class="search-view hidden">
         <h2>Search for Rooms:</h2>
         <form class="search-form">
           <label class="date-label" for="date">
-            Enter a date (YYYY/MM/DD):
+            Please enter a date:
           </label>
           <div class="search-container">
-            <input type="date" min="2024-01-14" max="2030-01-01" name="date" id="date" value="2021-01-14" required>
+            <input type="date" min="2024-01-14" max="2030-01-01" name="date" id="date" required>
             <button id="search-btn">Search</button>
           </div>
         </form>
-        <button class="main-btn" id="home-btn-2">Back to Home</button>
       </section>
       <section class="rooms-view hidden">
         <h2 class="available-rooms-title">Rooms available on '_____':</h2>
@@ -90,16 +83,14 @@
             <option>single room</option>
           </select>
         </form>
-        <p class="no-rooms-message">Our deepest apologies. No rooms are available. We welcome you to try again.</p>
+        <p class="no-rooms-message hidden">Our deepest apologies. No rooms are available. We welcome you to adjust your search and try again.</p>
         <section class="available-cards-container">
           <!-- available room cards will populate here -->
         </section>
-        <section>
-          <button class="main-btn" id="home-btn-3">Back to Home</button>
-          <button class="main-btn" id="book-stay-btn-3">Try Again</button>
-        </section>
       </section>
-      <section class="room-details-view hidden">
+      <section class="confirmation-view hidden">
+        <h2>Congratulations!</h2>
+        <p class="confirmation-message">You have successfully booked room #_____ for the evening of _____. We look forward to your stay!</p>
       </section>
     </main>
   </div>

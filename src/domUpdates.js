@@ -13,16 +13,13 @@ let welcomeView = document.querySelector('.welcome-view')
 let myBookingsView = document.querySelector('.my-bookings-view')
 let searchView = document.querySelector('.search-view')
 let roomsView = document.querySelector('.rooms-view')
+let confirmationView = document.querySelector('.confirmation-view')
 
 // Selectors: buttons
 let loginBtn = document.querySelector('#login-btn')
-let myBookingsBtn = document.querySelector('#my-bookings-btn')
-let homeBtn1 = document.querySelector('#home-btn-1')
-let homeBtn2 = document.querySelector('#home-btn-2')
-let homeBtn3 = document.querySelector('#home-btn-3')
-let bookStayBtn1 = document.querySelector('#book-stay-btn-1')
-let bookStayBtn2 = document.querySelector('#book-stay-btn-2')
-let bookStayBtn3 = document.querySelector('#book-stay-btn-3')
+let myBookingsBtn = document.querySelector('#nav-bookings-btn')
+let homeBtn = document.querySelector('#nav-home-btn')
+let bookStayBtn = document.querySelector('#nav-rooms-btn')
 let searchBtn = document.querySelector('#search-btn')
 let input = document.querySelector('#date')
 
@@ -33,14 +30,17 @@ let availableRoomsTitle = document.querySelector('.available-rooms-title')
 let welcomeMessage = document.querySelector('.welcome-message')
 let noRoomsMessage = document.querySelector('.no-rooms-message')
 let noBookingsMessage = document.querySelector('.no-bookings-message')
+let confirmationMessage = document.querySelector('.confirmation-message')
 let filterMenu = document.querySelector('#filter-drop-down')
+let navBar = document.querySelector('nav')
 
 // Variables
 let customer;
 let rooms;
 let bookings;
-let selectedDate = '2024/01/01'
-let selectedRoom;
+let selectedDate;
+let selectedRoom; 
+let currentRoom;
 let availableRooms;
 
 // Event Listeners
@@ -60,28 +60,13 @@ myBookingsBtn.addEventListener('click', () => {
   switchToView(myBookingsView)
 })
 
-homeBtn1.addEventListener('click', () => {
+homeBtn.addEventListener('click', () => {
   switchToView(welcomeView)
 })
 
-homeBtn2.addEventListener('click', () => {
-  switchToView(welcomeView)
-})
-
-homeBtn3.addEventListener('click', () => {
-  switchToView(welcomeView)
-})
-
-bookStayBtn1.addEventListener('click', () => {
+bookStayBtn.addEventListener('click', () => {
   switchToView(searchView)
-})
-
-bookStayBtn2.addEventListener('click', () => {
-  switchToView(searchView)
-})
-
-bookStayBtn3.addEventListener('click', () => {
-  switchToView(searchView)
+  input.value = ''
 })
 
 searchBtn.addEventListener('click', (event) => {
@@ -90,11 +75,9 @@ searchBtn.addEventListener('click', (event) => {
     return
   }
   if (checkDateValidity(input.value)) {
-    console.log('check')
     return
   }
   selectedDate = input.value.replaceAll("-", "/")
-  console.log(selectedDate)
   switchToView(roomsView)
   availableRoomsTitle.innerText = `Rooms available on ${selectedDate}`
   availableRooms = findRoomsByDate(selectedDate, rooms, bookings)
@@ -102,16 +85,19 @@ searchBtn.addEventListener('click', (event) => {
 })
 
 availableRoomsSection.addEventListener('click', (event) => {
-  selectedRoom = event.target.closest('article')
-  //run function to 'post' selected room as a booking
-  // console.log(selectedRoom)
+  if (event.target.closest('button')) {
+    selectedRoom = event.target.closest('article')
+    completeBooking()
+    switchToView(confirmationView)
+    displayBookingConfirmation()
+  }
 });
 
-myBookingsSection.addEventListener('click', (event) => {
-  selectedRoom = event.target.closest('article');
-  //run function to 'delete' selected room as a booking
-  // console.log(selectedRoom)
-});
+// myBookingsSection.addEventListener('click', (event) => {
+//   selectedRoom = event.target.closest('article');
+//   //run function to 'delete' selected room as a booking
+//   // console.log(selectedRoom)
+// });
 
 filterMenu.addEventListener('change', () => {
   console.log(filterMenu.value)
@@ -121,12 +107,28 @@ filterMenu.addEventListener('change', () => {
 
 // Functions
 
+function completeBooking() {
+  updateCurrentRoom(selectedRoom)
+  const newBooking = addBooking(customer, currentRoom, selectedDate)
+  postBooking(newBooking);
+  getBookings();
+  displayBookingConfirmation()
+}
+
+function updateCurrentRoom(selectedRoom) {
+  const selectedRoomNumber = Number(selectedRoom.querySelector('.roomNumber').innerText)
+  currentRoom = rooms.filter(room => {
+    return room.number === selectedRoomNumber
+  })[0]
+}
+
 function displayRooms(availableRooms) {
   availableRoomsSection.innerHTML = '';
   if (availableRooms.length === 0) {
-    noRoomsMessage.style.color = 'black'
+    noRoomsMessage.classList.remove('hidden')
   } else {
     availableRooms.forEach(room => {
+      noRoomsMessage.classList.add('hidden')
       availableRoomsSection.innerHTML += `
       <article class="available-card">
         <h3>Room #${room.number}</h3>
@@ -136,11 +138,16 @@ function displayRooms(availableRooms) {
           <p class="detail">Number of beds: ${room.numBeds}</p>
           <p class="detail"> Bed size: ${room.bedSize}</p>
           <p class="detail">Bidet: ${room.bidet}</p>
+          <p class="roomNumber hidden">${room.number}</p>
         </div>
         <button class="book-btn">Book this room</button>
       </article>`
     });
   }
+}
+
+function displayBookingConfirmation() {
+  confirmationMessage.innerText = `You have successfully booked room #${currentRoom.number} for the evening of ${selectedDate}. We can't wait to see you then!`
 }
 
 function checkDateValidity(date) {
@@ -155,6 +162,7 @@ function checkDateValidity(date) {
 function switchToView(view) {
   hideAllViews();
   show(view)
+  show(navBar)
 }
 
 function hideAllViews() {
@@ -163,6 +171,7 @@ function hideAllViews() {
   hide(myBookingsView);
   hide(searchView);
   hide(roomsView);
+  hide(confirmationView);
 }
 
 function hide(element) {
