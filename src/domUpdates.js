@@ -2,31 +2,32 @@ import { getData, postBooking, deleteBooking } from './apiCalls'
 import { gatherBookingsByCustomer, calculateCosts, findRoomsByDate, filterRoomsByType, addBooking } from './rooms'
 
 // Selectors: views
-let loginView = document.querySelector('.login-view');
-let welcomeView = document.querySelector('.welcome-view');
-let myBookingsView = document.querySelector('.my-bookings-view');
-let searchView = document.querySelector('.search-view');
-let roomsView = document.querySelector('.rooms-view');
-let confirmationView = document.querySelector('.confirmation-view');
+const loginView = document.querySelector('.login-view');
+const welcomeView = document.querySelector('.welcome-view');
+const myBookingsView = document.querySelector('.my-bookings-view');
+const searchView = document.querySelector('.search-view');
+const roomsView = document.querySelector('.rooms-view');
+const confirmationView = document.querySelector('.confirmation-view');
 
 // Selectors: buttons
-let loginBtn = document.querySelector('#login-btn');
-let myBookingsBtn = document.querySelector('#nav-bookings-btn');
-let homeBtn = document.querySelector('#nav-home-btn');
-let bookStayBtn = document.querySelector('#nav-rooms-btn');
-let searchBtn = document.querySelector('#search-btn');
+const loginBtn = document.querySelector('#login-btn');
+const myBookingsBtn = document.querySelector('#nav-bookings-btn');
+const homeBtn = document.querySelector('#nav-home-btn');
+const bookStayBtn = document.querySelector('#nav-rooms-btn');
+const searchBtn = document.querySelector('#search-btn');
 
 // Selectors: other
-let navBar = document.querySelector('nav');
-let availableRoomsSection = document.querySelector('.available-cards-container');
-let myBookingsSection = document.querySelector('.my-bookings-container');
-let welcomeMessage = document.querySelector('.welcome-message');
-let noRoomsMessage = document.querySelector('.no-rooms-message');
-let noBookingsMessage = document.querySelector('.no-bookings-message');
-let confirmationMessage = document.querySelector('.confirmation-message');
-let availableRoomsTitle = document.querySelector('.available-rooms-title');
-let filterMenu = document.querySelector('#filter-drop-down');
-let dateInput = document.querySelector('#date');
+const navBar = document.querySelector('nav');
+const availableRoomsSection = document.querySelector('.available-cards-container');
+const myBookingsSection = document.querySelector('.my-bookings-container');
+const welcomeMessage = document.querySelector('.welcome-message');
+const noRoomsMessage = document.querySelector('.no-rooms-message');
+const noBookingsMessage = document.querySelector('.no-bookings-message');
+const confirmationMessage = document.querySelector('.confirmation-message');
+const invalidDateMessage = document.querySelector('.invalid-date-message')
+const availableRoomsTitle = document.querySelector('.available-rooms-title');
+const filterMenu = document.querySelector('#filter-drop-down');
+const dateInput = document.querySelector('#date');
 
 // Variables
 let customer;
@@ -66,11 +67,16 @@ bookStayBtn.addEventListener('click', () => {
 searchBtn.addEventListener('click', (event) => {
   event.preventDefault();
   if (!dateInput.value) {
+    invalidDateMessage.classList.remove('hidden')
     return;
   }
   if (checkDateValidity(dateInput.value)) {
+    invalidDateMessage.classList.remove('hidden')
     return;
+  } else {
+    invalidDateMessage.classList.add('hidden')
   }
+  invalidDateMessage.classList.add('hidden')
   selectedDate = dateInput.value.replaceAll("-", "/");
   switchToView(roomsView);
   availableRoomsTitle.innerText = `Rooms available on ${selectedDate}`;
@@ -81,8 +87,8 @@ searchBtn.addEventListener('click', (event) => {
 availableRoomsSection.addEventListener('click', (event) => {
   if (event.target.closest('button')) {
     selectedRoom = event.target.closest('article');
-    completeBooking();
     switchToView(confirmationView);
+    completeBooking();
     displayBookingConfirmation();
   }
 });
@@ -92,12 +98,6 @@ filterMenu.addEventListener('change', () => {
   let filteredRooms = filterRoomsByType(filterMenu.value, availableRooms);
   displayRooms(filteredRooms);
 })
-
-// myBookingsSection.addEventListener('click', (event) => {
-//   selectedRoom = event.target.closest('article');
-//   //run function to 'delete' selected room as a booking
-//   // console.log(selectedRoom);
-// });
 
 // Functions
 function displayBookings(customerBookings) {
@@ -111,7 +111,6 @@ function displayBookings(customerBookings) {
       <article class="booked-card">
         <h3>${booking.date}</h3>
         <p class="booking-num">Room #${booking.roomNumber}</p>
-        <button class="cancel-btn">Cancel booking</button>
       </article>`;
     });
   }
@@ -168,9 +167,6 @@ function displayBookingConfirmation() {
 function checkDateValidity(date) {
   const userInput = new Date(date);
   const currentDate = new Date();
-  console.log(userInput);
-  console.log(currentDate);
-  // currentDate.setHours(0, 0, 0, 0);
   return userInput < currentDate;
 }
 
