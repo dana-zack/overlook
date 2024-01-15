@@ -30,6 +30,7 @@ function findRoomsByDate(date, sampleRooms, sampleBookings) {
 }
 
 function filterRoomsByType(type, rooms) {
+  if (type === 'select') return rooms
   return rooms.filter(room => room.roomType === type);
 }
 
