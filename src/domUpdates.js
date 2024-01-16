@@ -25,6 +25,7 @@ const noRoomsMessage = document.querySelector('.no-rooms-message');
 const noBookingsMessage = document.querySelector('.no-bookings-message');
 const confirmationMessage = document.querySelector('.confirmation-message');
 const invalidDateMessage = document.querySelector('.invalid-date-message')
+const costMessage = document.querySelector('.cost-message')
 const availableRoomsTitle = document.querySelector('.available-rooms-title');
 const filterMenu = document.querySelector('#filter-drop-down');
 const dateInput = document.querySelector('#date');
@@ -48,12 +49,11 @@ window.addEventListener('load', () => {
 loginBtn.addEventListener('click', () => {
   switchToView(welcomeView);
   welcomeMessage.innerText = `Welcome, ${customer.name}`;
-  // console.log(bookings)
 })
 
 myBookingsBtn.addEventListener('click', () => {
   switchToView(myBookingsView);
-  viewBookings()
+  viewBookings();
 })
 
 homeBtn.addEventListener('click', () => {
@@ -68,16 +68,16 @@ bookStayBtn.addEventListener('click', () => {
 searchBtn.addEventListener('click', (event) => {
   event.preventDefault();
   if (!dateInput.value) {
-    invalidDateMessage.classList.remove('hidden')
+    invalidDateMessage.classList.remove('hidden');
     return;
   }
   if (checkDateValidity(dateInput.value)) {
-    invalidDateMessage.classList.remove('hidden')
+    invalidDateMessage.classList.remove('hidden');
     return;
   } else {
-    invalidDateMessage.classList.add('hidden')
+    invalidDateMessage.classList.add('hidden');
   }
-  invalidDateMessage.classList.add('hidden')
+  invalidDateMessage.classList.add('hidden');
   selectedDate = dateInput.value.replaceAll("-", "/");
   switchToView(roomsView);
   availableRoomsTitle.innerText = `Rooms available on ${selectedDate}`;
@@ -117,8 +117,11 @@ function displayBookings(customerBookings) {
 }
 
 function viewBookings() {
-  const customerBookings = gatherBookingsByCustomer(customer, bookings)
-  displayBookings(customerBookings)
+  const customerBookings = gatherBookingsByCustomer(customer, bookings);
+  displayBookings(customerBookings);
+  const totalCost = calculateCosts(customerBookings, rooms);
+  costMessage.innerText = `Total cost: ${totalCost}`;
+
 }
 
 function completeBooking() {

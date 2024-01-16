@@ -90,7 +90,7 @@ h2 {
   align-items: center;
 }
 
-.no-bookings-message, .no-rooms-message, .invalid-date-message {
+.no-bookings-message, .no-rooms-message, .invalid-date-message, .cost-message {
   font-size: 23px;
   margin: 10px 0 0;
 }
