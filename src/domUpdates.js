@@ -43,16 +43,17 @@ let currentRoom;
 let availableRooms;
 
 // Event Listeners
-window.addEventListener('load', () => {
+window.addEventListener('load', (event) => {
   getAllUsers();
-  // getUser();
   getRooms();
   getBookings();
 })
 
-loginBtn.addEventListener('click', () => {
+loginBtn.addEventListener('click', (event) => {
+  event.preventDefault()
+  let customerID = login()
+  getUser(customerID);
   switchToView(welcomeView);
-  welcomeMessage.innerText = `Welcome, ${customer.name}`;
 })
 
 myBookingsBtn.addEventListener('click', () => {
@@ -103,6 +104,17 @@ filterMenu.addEventListener('change', () => {
 })
 
 // Functions
+function login() {
+  // event.preventDefault();
+  console.log(allCustomers)
+  const user = allCustomers.filter(customer => {
+    if (`customer${customer.id}` === usernameInput.value && `overlook2021` === passwordInput.value) {
+      return customer;
+    }
+  });
+  return user[0].id
+}
+
 function displayBookings(customerBookings) {
   myBookingsSection.innerHTML = '';
   if (customerBookings.length === 0) {
@@ -211,6 +223,7 @@ function getUser(id) {
   getData(`http://localhost:3001/api/v1/customers/${id}`)
     .then(data => {
       customer = data
+      welcomeMessage.innerText = `Welcome, ${customer.name}`
     })
 }
 
