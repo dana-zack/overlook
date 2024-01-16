@@ -1,5 +1,5 @@
-import { getData, postBooking, deleteBooking } from './apiCalls'
-import { gatherBookingsByCustomer, calculateCosts, findRoomsByDate, filterRoomsByType, formatBooking, addBooking } from './rooms'
+import { getData, postBooking } from './apiCalls';
+import { gatherBookingsByCustomer, calculateCosts, findRoomsByDate, filterRoomsByType, formatBooking, addBooking } from './rooms';
 
 // Selectors: views
 const loginView = document.querySelector('.login-view');
@@ -29,8 +29,11 @@ const costMessage = document.querySelector('.cost-message')
 const availableRoomsTitle = document.querySelector('.available-rooms-title');
 const filterMenu = document.querySelector('#filter-drop-down');
 const dateInput = document.querySelector('#date');
+const usernameInput = document.querySelector('#username');
+const passwordInput = document.querySelector('#password');
 
 // Variables
+let allCustomers;
 let customer;
 let rooms;
 let bookings;
@@ -41,14 +44,16 @@ let availableRooms;
 
 // Event Listeners
 window.addEventListener('load', () => {
-  getUser(50);
+  getAllUsers();
   getRooms();
   getBookings();
 })
 
-loginBtn.addEventListener('click', () => {
+loginBtn.addEventListener('click', (event) => {
+  event.preventDefault()
+  let customerID = login()
+  getUser(customerID);
   switchToView(welcomeView);
-  welcomeMessage.innerText = `Welcome, ${customer.name}`;
 })
 
 myBookingsBtn.addEventListener('click', () => {
@@ -94,12 +99,20 @@ availableRoomsSection.addEventListener('click', (event) => {
 });
 
 filterMenu.addEventListener('change', () => {
-  console.log(filterMenu.value);
   let filteredRooms = filterRoomsByType(filterMenu.value, availableRooms);
   displayRooms(filteredRooms);
 })
 
 // Functions
+function login() {
+  const user = allCustomers.filter(customer => {
+    if (`customer${customer.id}` === usernameInput.value && `overlook2021` === passwordInput.value) {
+      return customer;
+    }
+  });
+  return user[0].id;
+}
+
 function displayBookings(customerBookings) {
   myBookingsSection.innerHTML = '';
   if (customerBookings.length === 0) {
@@ -121,7 +134,6 @@ function viewBookings() {
   displayBookings(customerBookings);
   const totalCost = calculateCosts(customerBookings, rooms);
   costMessage.innerText = `Total cost: ${totalCost}`;
-
 }
 
 function completeBooking() {
@@ -197,33 +209,39 @@ function show(element) {
 }
 
 // Data Retrieval & Assignment
+function getAllUsers() {
+  getData('http://localhost:3001/api/v1/customers')
+    .then(data => {
+      allCustomers = data.customers;
+    })
+}
+
 function getUser(id) {
   getData(`http://localhost:3001/api/v1/customers/${id}`)
     .then(data => {
-      customer = data
-      console.log(customer)
+      customer = data;
+      welcomeMessage.innerText = `Welcome, ${customer.name}`;
     })
 }
 
 function getRooms() {
   getData('http://localhost:3001/api/v1/rooms')
     .then(data => {
-      rooms = data.rooms
-      console.log(rooms)
+      rooms = data.rooms;
     })
 }
 
 function getBookings() {
   getData('http://localhost:3001/api/v1/bookings')
     .then(data => {
-      bookings = data.bookings
-      console.log(bookings)
+      bookings = data.bookings;
     })
 }
 
 // ============================================================
 export {
+  getAllUsers,
   getUser,
   getRooms,
   getBookings
-}
+};

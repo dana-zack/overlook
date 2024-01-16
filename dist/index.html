@@ -22,7 +22,17 @@
     </header>
     <main>
       <section class="login-view">
-        <button class="main-btn" id="login-btn">Login</button>
+        <h2>Please enter your credentials</h2>
+        <form class="login-form">
+          <section class="login-input-container">
+            <label for="username">Username: </label>
+            <input type="text" id="username" required>
+            <br>
+            <label for="password">Password: </label>
+            <input type="text" id="password" required>
+          </section>
+          <button type='submit' class="main-btn" id="login-btn">Login</button>
+        </form>
       </section>
       <section class="welcome-view hidden">
         <h2 class="welcome-message">Welcome, ''</h2>
