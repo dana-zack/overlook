@@ -128,7 +128,7 @@ function completeBooking() {
   updateCurrentRoom(selectedRoom);
   const newBooking = formatBooking(customer, currentRoom, selectedDate);
   postBooking(newBooking);
-  addBooking(newBooking, bookings)
+  addBooking(newBooking, bookings);
   displayBookingConfirmation();
 }
 

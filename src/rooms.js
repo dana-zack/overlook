@@ -5,7 +5,7 @@ function gatherBookingsByCustomer(customer, allBookings) {
 function calculateCosts(customerBookings, sampleRooms) {
   const totalCost = customerBookings.reduce((acc, booking) => {
     const eachRoomCost = sampleRooms.find(room => {
-      return booking.roomNumber === room.number
+      return booking.roomNumber === room.number;
     }).costPerNight;
     acc += eachRoomCost;
     return acc;
@@ -30,7 +30,7 @@ function findRoomsByDate(date, sampleRooms, sampleBookings) {
 }
 
 function filterRoomsByType(type, rooms) {
-  if (type === 'select') return rooms
+  if (type === 'select') return rooms;
   return rooms.filter(room => room.roomType === type);
 }
 
