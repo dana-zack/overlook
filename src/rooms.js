@@ -55,4 +55,4 @@ export {
   filterRoomsByType,
   formatBooking,
   addBooking
-}
+};

@@ -1,7 +1,7 @@
 import chai from 'chai';
 const expect = chai.expect;
-import { sampleRooms, sampleBookings, sampleCustomer1, sampleCustomer2, sampleCustomer1Bookings, sampleCustomer2Bookings, roomsByDate1, sampleBookings2, sampleSuiteRooms, sampleRoom1, sampleBooking, modifiedBookings } from './sample-data'
-import { gatherBookingsByCustomer, calculateCosts, findRoomsByDate, filterRoomsByType, formatBooking, addBooking } from '../src/rooms'
+import { sampleRooms, sampleBookings, sampleCustomer1, sampleCustomer2, sampleCustomer1Bookings, sampleCustomer2Bookings, roomsByDate1, sampleBookings2, sampleSuiteRooms, sampleRoom1, sampleBooking, modifiedBookings } from './sample-data';
+import { gatherBookingsByCustomer, calculateCosts, findRoomsByDate, filterRoomsByType, formatBooking, addBooking } from '../src/rooms';
 
 // ===================================================================
 describe('gatherBookingsByCustomer', function() {

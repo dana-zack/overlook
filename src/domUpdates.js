@@ -1,5 +1,5 @@
-import { getData, postBooking, deleteBooking } from './apiCalls'
-import { gatherBookingsByCustomer, calculateCosts, findRoomsByDate, filterRoomsByType, formatBooking, addBooking } from './rooms'
+import { getData, postBooking } from './apiCalls';
+import { gatherBookingsByCustomer, calculateCosts, findRoomsByDate, filterRoomsByType, formatBooking, addBooking } from './rooms';
 
 // Selectors: views
 const loginView = document.querySelector('.login-view');
@@ -43,7 +43,7 @@ let currentRoom;
 let availableRooms;
 
 // Event Listeners
-window.addEventListener('load', (event) => {
+window.addEventListener('load', () => {
   getAllUsers();
   getRooms();
   getBookings();
@@ -105,14 +105,12 @@ filterMenu.addEventListener('change', () => {
 
 // Functions
 function login() {
-  // event.preventDefault();
-  console.log(allCustomers)
   const user = allCustomers.filter(customer => {
     if (`customer${customer.id}` === usernameInput.value && `overlook2021` === passwordInput.value) {
       return customer;
     }
   });
-  return user[0].id
+  return user[0].id;
 }
 
 function displayBookings(customerBookings) {
@@ -214,30 +212,29 @@ function show(element) {
 function getAllUsers() {
   getData('http://localhost:3001/api/v1/customers')
     .then(data => {
-      allCustomers = data.customers
-      console.log(allCustomers)
+      allCustomers = data.customers;
     })
 }
 
 function getUser(id) {
   getData(`http://localhost:3001/api/v1/customers/${id}`)
     .then(data => {
-      customer = data
-      welcomeMessage.innerText = `Welcome, ${customer.name}`
+      customer = data;
+      welcomeMessage.innerText = `Welcome, ${customer.name}`;
     })
 }
 
 function getRooms() {
   getData('http://localhost:3001/api/v1/rooms')
     .then(data => {
-      rooms = data.rooms
+      rooms = data.rooms;
     })
 }
 
 function getBookings() {
   getData('http://localhost:3001/api/v1/bookings')
     .then(data => {
-      bookings = data.bookings
+      bookings = data.bookings;
     })
 }
 
@@ -247,4 +244,4 @@ export {
   getUser,
   getRooms,
   getBookings
-}
+};
