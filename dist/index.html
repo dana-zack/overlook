@@ -14,7 +14,7 @@
     <!-- <div class="overlay"></div> -->
     <header>
       <h1>Overlook Hotel</h1>
-      <nav class="nav-bar hidden">
+      <nav class="nav-bar hidden" aria-label="navigation bar">
         <button id="nav-home-btn" class="main-btn">Home</button>
         <button id="nav-bookings-btn" class="main-btn">My Bookings</button>
         <button id="nav-rooms-btn" class="main-btn">Book a Stay</button>
@@ -26,13 +26,14 @@
         <form class="login-form">
           <section class="login-input-container">
             <label for="username">Username: </label>
-            <input type="text" id="username" required>
+            <input type="text" id="username" aria-label="Enter your username" required>
             <br>
             <label for="password">Password: </label>
-            <input type="text" id="password" required>
+            <input type="text" id="password" aria-label="Enter your password" required>
           </section>
           <button type='submit' class="main-btn" id="login-btn">Login</button>
         </form>
+        <p class="invalid-credentials-message hidden" role="alert" aria-live="assertive">Invalid credentials. Please try again.</p>
       </section>
       <section class="welcome-view hidden">
         <h2 class="welcome-message">Welcome, ''</h2>
@@ -52,11 +53,11 @@
             Please enter a date:
           </label>
           <div class="search-container">
-            <input type="date" min="2024-01-22" max="2030-01-01" name="date" id="date" required>
+            <input type="date" min="2024-01-22" max="2030-01-01" name="date" id="date" aria-label="Enter date" required>
             <button id="search-btn">Search</button>
           </div>
         </form>
-        <p class="invalid-date-message hidden">Invalid date. Try again.</p>
+        <p class="invalid-date-message hidden" role="alert" aria-live="assertive">Invalid date. Please try again.</p>
       </section>
       <section class="rooms-view hidden">
         <h2 class="available-rooms-title">Rooms available on '_____':</h2>
