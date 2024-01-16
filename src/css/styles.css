@@ -19,6 +19,7 @@ body {
   min-height: 90vh;
   background-color: rgba(255,255,255,.85);
   border-radius: 2em;
+  margin: 50px;
 }
 
 header {
@@ -75,7 +76,7 @@ h2 {
   font-weight: 200;
 }
 
-.main-btn:hover, .booked-card:hover, #search-btn:hover {
+.main-btn:hover, #search-btn:hover {
   background-color: rgb(179, 200, 218);
   border: 2px solid black;
   cursor: pointer;
@@ -83,13 +84,13 @@ h2 {
 
 /* MY BOOKINGS VIEW */
 
-.my-bookings-view, .rooms-view, .confirmation-view {
+.my-bookings-view, .rooms-view, .confirmation-view, .cancellation-view, .search-view {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.no-bookings-message, .no-rooms-message {
+.no-bookings-message, .no-rooms-message, .invalid-date-message, .cost-message {
   font-size: 23px;
   margin: 10px 0 0;
 }
@@ -101,7 +102,7 @@ h2 {
   width: 95%;
   /* border: 2px solid black; */
   min-height: 20vh;
-  margin-top: 0;
+  margin-top: 10px;
   margin-bottom: 20px;
 }
 
@@ -115,17 +116,11 @@ h2 {
   opacity: 120%;
 }
 
-.booked-card-img {
-  width: 80%;
+.booking-num {
+ font-size: 20px;
 }
 
 /* SEARCH AVAILABLE VIEW */
-
-.search-view {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
 .search-form {
   display: flex;
@@ -208,7 +203,8 @@ h2 {
 }
 
 h3 {
-  margin: 10px;
+  margin: 20px 0 0;
+  font-size: 20px;
 }
 
 .detail {
@@ -216,19 +212,18 @@ h3 {
   font-size: 16px;
 }
 
-.book-btn {
+.book-btn, .cancel-btn {
   border: none;
   border-radius: 2em;
-  margin: 10px;
+  margin: 0 0 20px;
   width: 60%;
   height: 30px;
   font-size: 17px;
 }
 
-.book-btn:hover {
+.book-btn:hover, .cancel-btn:hover {
   border: none;
   border-radius: 2em;
-  margin: 10px;
   cursor: pointer;
   background-color: white;
   transform: scale(1.1);
@@ -241,7 +236,7 @@ h3 {
   justify-content: center;
 }
 
-.confirmation-message {
+.confirmation-message, .cancellation-message {
   font-size: 23px;
 }
 

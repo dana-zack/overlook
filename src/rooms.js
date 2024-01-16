@@ -5,7 +5,7 @@ function gatherBookingsByCustomer(customer, allBookings) {
 function calculateCosts(customerBookings, sampleRooms) {
   const totalCost = customerBookings.reduce((acc, booking) => {
     const eachRoomCost = sampleRooms.find(room => {
-      return booking.roomNumber === room.number
+      return booking.roomNumber === room.number;
     }).costPerNight;
     acc += eachRoomCost;
     return acc;
@@ -30,11 +30,11 @@ function findRoomsByDate(date, sampleRooms, sampleBookings) {
 }
 
 function filterRoomsByType(type, rooms) {
-  if (type === 'select') return rooms
+  if (type === 'select') return rooms;
   return rooms.filter(room => room.roomType === type);
 }
 
-function addBooking(customer, currentRoom, date) {
+function formatBooking(customer, currentRoom, date) {
   const newBooking = {
     userID: customer.id,
     date,
@@ -43,10 +43,16 @@ function addBooking(customer, currentRoom, date) {
   return newBooking;
 }
 
+function addBooking(newBooking, bookings) {
+  bookings.push(newBooking);
+  return bookings;
+}
+
 export {
   gatherBookingsByCustomer,
   calculateCosts,
   findRoomsByDate,
   filterRoomsByType,
+  formatBooking,
   addBooking
 }

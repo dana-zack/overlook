@@ -157,6 +157,19 @@ const sampleRoom1 = {
 
 const sampleBooking = { userID: 1, date: '2024/05/10', roomNumber: 1 };
 
+const modifiedBookings = [
+  { id: '123abc', userID: 1, date: '2024/01/25', roomNumber: 1 },
+  { id: '456def', userID: 1, date: '2024/02/14', roomNumber: 7 },
+  { id: '789ghi', userID: 1, date: '2024/02/17', roomNumber: 4 },
+  { id: '1011jkl', userID: 3, date: '2024/03/08', roomNumber: 3 },
+  { id: '1213mno', userID: 3, date: '2024/04/22', roomNumber: 5 },
+  { id: '1415pqr', userID: 3, date: '2024/04/18', roomNumber: 6 },
+  { id: '1617stu', userID: 4, date: '2024/03/09', roomNumber: 2 },
+  { id: '1819vwx', userID: 5, date: '2024/01/25', roomNumber: 5 },
+  { id: '2021yza', userID: 5, date: '2024/01/25', roomNumber: 4 },
+  { userID: 1, date: '2024/05/10', roomNumber: 1 }
+];
+
 export {
   sampleRooms,
   sampleBookings,
@@ -168,5 +181,6 @@ export {
   sampleBookings2,
   sampleSuiteRooms,
   sampleRoom1,
-  sampleBooking
+  sampleBooking,
+  modifiedBookings
 };
