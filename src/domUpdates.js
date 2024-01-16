@@ -94,7 +94,6 @@ availableRoomsSection.addEventListener('click', (event) => {
 });
 
 filterMenu.addEventListener('change', () => {
-  console.log(filterMenu.value);
   let filteredRooms = filterRoomsByType(filterMenu.value, availableRooms);
   displayRooms(filteredRooms);
 })
@@ -121,7 +120,6 @@ function viewBookings() {
   displayBookings(customerBookings);
   const totalCost = calculateCosts(customerBookings, rooms);
   costMessage.innerText = `Total cost: ${totalCost}`;
-
 }
 
 function completeBooking() {
@@ -201,7 +199,6 @@ function getUser(id) {
   getData(`http://localhost:3001/api/v1/customers/${id}`)
     .then(data => {
       customer = data
-      console.log(customer)
     })
 }
 
@@ -209,7 +206,6 @@ function getRooms() {
   getData('http://localhost:3001/api/v1/rooms')
     .then(data => {
       rooms = data.rooms
-      console.log(rooms)
     })
 }
 
@@ -217,7 +213,6 @@ function getBookings() {
   getData('http://localhost:3001/api/v1/bookings')
     .then(data => {
       bookings = data.bookings
-      console.log(bookings)
     })
 }
 

@@ -21,7 +21,6 @@ function postBooking(newBooking) {
   })
     .then(response => {
       if (response.ok) {
-        //addBooking() --> need to write this function to update the data model, but perhaps move to DOM updates...
         return response.json();
       } else {
         throw new Error('Sorry, please come back later');
