@@ -25,6 +25,7 @@ const noRoomsMessage = document.querySelector('.no-rooms-message');
 const noBookingsMessage = document.querySelector('.no-bookings-message');
 const confirmationMessage = document.querySelector('.confirmation-message');
 const invalidDateMessage = document.querySelector('.invalid-date-message')
+const invalidCredentialsMessage = document.querySelector('.invalid-credentials-message');
 const costMessage = document.querySelector('.cost-message')
 const availableRoomsTitle = document.querySelector('.available-rooms-title');
 const filterMenu = document.querySelector('#filter-drop-down');
@@ -51,9 +52,7 @@ window.addEventListener('load', () => {
 
 loginBtn.addEventListener('click', (event) => {
   event.preventDefault()
-  let customerID = login()
-  getUser(customerID);
-  switchToView(welcomeView);
+  login()
 })
 
 myBookingsBtn.addEventListener('click', () => {
@@ -68,6 +67,7 @@ homeBtn.addEventListener('click', () => {
 bookStayBtn.addEventListener('click', () => {
   switchToView(searchView);
   dateInput.value = '';
+  invalidDateMessage.classList.add('hidden')
 })
 
 searchBtn.addEventListener('click', (event) => {
@@ -79,15 +79,8 @@ searchBtn.addEventListener('click', (event) => {
   if (checkDateValidity(dateInput.value)) {
     invalidDateMessage.classList.remove('hidden');
     return;
-  } else {
-    invalidDateMessage.classList.add('hidden');
   }
-  invalidDateMessage.classList.add('hidden');
-  selectedDate = dateInput.value.replaceAll("-", "/");
-  switchToView(roomsView);
-  availableRoomsTitle.innerText = `Rooms available on ${selectedDate}`;
-  availableRooms = findRoomsByDate(selectedDate, rooms, bookings);
-  displayRooms(availableRooms);
+  searchRooms()
 })
 
 availableRoomsSection.addEventListener('click', (event) => {
@@ -104,13 +97,35 @@ filterMenu.addEventListener('change', () => {
 })
 
 // Functions
+function searchRooms() {
+  invalidDateMessage.classList.add('hidden');
+  selectedDate = dateInput.value.replaceAll("-", "/");
+  switchToView(roomsView);
+  availableRoomsTitle.innerText = `Rooms available on ${selectedDate}`;
+  availableRooms = findRoomsByDate(selectedDate, rooms, bookings);
+  displayRooms(availableRooms);
+}
+
 function login() {
+  let user = checkCredentials()
+  console.log(user)
+  if (!user.length) {
+    invalidCredentialsMessage.classList.remove('hidden');
+    return;
+  }
+  invalidCredentialsMessage.classList.add('hidden')
+  const userID = user[0].id
+  getUser(userID);
+  switchToView(welcomeView);
+}
+
+function checkCredentials() {
   const user = allCustomers.filter(customer => {
     if (`customer${customer.id}` === usernameInput.value && `overlook2021` === passwordInput.value) {
       return customer;
     }
   });
-  return user[0].id;
+  return user;
 }
 
 function displayBookings(customerBookings) {
