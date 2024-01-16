@@ -1,7 +1,7 @@
 import chai from 'chai';
 const expect = chai.expect;
-import { sampleRooms, sampleBookings, sampleCustomer1, sampleCustomer2, sampleCustomer1Bookings, sampleCustomer2Bookings, roomsByDate1, sampleBookings2, sampleSuiteRooms, sampleRoom1, sampleBooking } from './sample-data'
-import { gatherBookingsByCustomer, calculateCosts, findRoomsByDate, filterRoomsByType, addBooking } from '../src/rooms'
+import { sampleRooms, sampleBookings, sampleCustomer1, sampleCustomer2, sampleCustomer1Bookings, sampleCustomer2Bookings, roomsByDate1, sampleBookings2, sampleSuiteRooms, sampleRoom1, sampleBooking, modifiedBookings } from './sample-data'
+import { gatherBookingsByCustomer, calculateCosts, findRoomsByDate, filterRoomsByType, formatBooking, addBooking } from '../src/rooms'
 
 // ===================================================================
 describe('gatherBookingsByCustomer', function() {
@@ -64,9 +64,18 @@ describe('filterRoomsByType', function() {
 });
 
 // ===================================================================
-describe('addBooking', function() {
-  it('Should populate a new booking', function() {
-    const updatedBooking = addBooking(sampleCustomer1, sampleRoom1, '2024/05/10', sampleBookings);
+describe('formatBooking', function() {
+  it('Should format a new booking object', function() {
+    const updatedBooking = formatBooking(sampleCustomer1, sampleRoom1, '2024/05/10');
     expect(updatedBooking).to.deep.equal(sampleBooking)
+  });
+});
+
+// ===================================================================
+describe('addBooking', function() {
+  it('Should add a new booking to the bookings array', function() {
+    const updatedBooking = formatBooking(sampleCustomer1, sampleRoom1, '2024/05/10');
+    const updatedBookings = addBooking(updatedBooking, sampleBookings)
+    expect(updatedBookings).to.deep.equal(modifiedBookings)
   });
 });

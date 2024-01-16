@@ -1,5 +1,5 @@
 import { getData, postBooking, deleteBooking } from './apiCalls'
-import { gatherBookingsByCustomer, calculateCosts, findRoomsByDate, filterRoomsByType, addBooking } from './rooms'
+import { gatherBookingsByCustomer, calculateCosts, findRoomsByDate, filterRoomsByType, formatBooking, addBooking } from './rooms'
 
 // Selectors: views
 const loginView = document.querySelector('.login-view');
@@ -48,6 +48,7 @@ window.addEventListener('load', () => {
 loginBtn.addEventListener('click', () => {
   switchToView(welcomeView);
   welcomeMessage.innerText = `Welcome, ${customer.name}`;
+  // console.log(bookings)
 })
 
 myBookingsBtn.addEventListener('click', () => {
@@ -89,7 +90,6 @@ availableRoomsSection.addEventListener('click', (event) => {
     selectedRoom = event.target.closest('article');
     switchToView(confirmationView);
     completeBooking();
-    displayBookingConfirmation();
   }
 });
 
@@ -123,9 +123,9 @@ function viewBookings() {
 
 function completeBooking() {
   updateCurrentRoom(selectedRoom);
-  const newBooking = addBooking(customer, currentRoom, selectedDate);
+  const newBooking = formatBooking(customer, currentRoom, selectedDate);
   postBooking(newBooking);
-  getBookings();
+  addBooking(newBooking, bookings)
   displayBookingConfirmation();
 }
 
