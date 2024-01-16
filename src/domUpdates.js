@@ -29,8 +29,11 @@ const costMessage = document.querySelector('.cost-message')
 const availableRoomsTitle = document.querySelector('.available-rooms-title');
 const filterMenu = document.querySelector('#filter-drop-down');
 const dateInput = document.querySelector('#date');
+const usernameInput = document.querySelector('#username');
+const passwordInput = document.querySelector('#password');
 
 // Variables
+let allCustomers;
 let customer;
 let rooms;
 let bookings;
@@ -41,7 +44,8 @@ let availableRooms;
 
 // Event Listeners
 window.addEventListener('load', () => {
-  getUser(50);
+  getAllUsers();
+  // getUser();
   getRooms();
   getBookings();
 })
@@ -195,6 +199,14 @@ function show(element) {
 }
 
 // Data Retrieval & Assignment
+function getAllUsers() {
+  getData('http://localhost:3001/api/v1/customers')
+    .then(data => {
+      allCustomers = data.customers
+      console.log(allCustomers)
+    })
+}
+
 function getUser(id) {
   getData(`http://localhost:3001/api/v1/customers/${id}`)
     .then(data => {
@@ -218,6 +230,7 @@ function getBookings() {
 
 // ============================================================
 export {
+  getAllUsers,
   getUser,
   getRooms,
   getBookings
